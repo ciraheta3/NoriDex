@@ -10,7 +10,7 @@ the product goal; this scaffold does not implement offline support.
 ## Prerequisites
 
 - Node.js **24.19.0 LTS** (recorded in `.nvmrc`); use the Node 24 LTS line.
-- npm **11.9.0** (bundled with the documented Node version).
+- npm (included with Node.js).
 
 If you use nvm, run `nvm install` and `nvm use` in the repository first.
 

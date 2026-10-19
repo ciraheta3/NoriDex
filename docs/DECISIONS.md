@@ -15,6 +15,11 @@ global styles hold only shared defaults. Start with an entry point, app componen
 and stylesheet, without routing, state libraries, or a component design system.
 Future menu data and search/filter logic should remain separate from UI code.
 
+The current iPad browser compatibility assumption is iPadOS/Safari 16.4+,
+matching Tailwind CSS 4's modern browser baseline. Older iPadOS/Safari versions
+are not targeted. This is a compatibility assumption, not a verified support
+claim; real-device iPad testing remains outstanding.
+
 Target Node 24 LTS (24.19.0 for reproducible setup). Use current stable mutually
 compatible packages and commit the npm lockfile. TypeScript 6.0 is selected
 because the current `typescript-eslint` peer range excludes TypeScript 7.
