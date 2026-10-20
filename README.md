@@ -36,6 +36,23 @@ Dependency installation requires network access.
 | `npm run build` | Typecheck and produce a production bundle in `dist/`. |
 | `npm run preview` | Serve the built `dist/` locally (run `build` first). |
 
+## Continuous integration
+
+[CI](.github/workflows/ci.yml) runs on pull requests targeting `main` and pushes
+to `main`. One GitHub-hosted Ubuntu job uses the Node.js version in `.nvmrc`,
+then runs `npm ci` (using `package-lock.json`), `npm run lint`,
+`npm run typecheck`, `npm run test`, and `npm run build` in that order.
+Any failing command fails the job; the job has a 10-minute timeout.
+The workflow uses only read access to repository contents, does not persist
+checkout credentials, and requires no secrets.
+
+To troubleshoot, open the pull request's **Checks** tab, select **CI / Verify**,
+and expand the failed step's logs. You can also find the run under the
+repository's **Actions** tab. Reproduce the failure locally with the Node.js
+version in `.nvmrc` and the commands above, then push a fix to rerun CI.
+If no run appears, check **Settings → Actions → General** to confirm Actions
+and the official `actions/checkout` and `actions/setup-node` actions are allowed.
+
 ## Source layout
 
 - `index.html` supplies document metadata and the React mount point.
