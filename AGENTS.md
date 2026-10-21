@@ -45,3 +45,11 @@ NoriDex is an offline-first, staff-facing restaurant menu encyclopedia optimized
 - Do not push, merge, deploy, or make unrelated repository changes unless requested.
 - In the final handoff, summarize changes, files affected, checks run and results, and any unverified behavior or risks.
 - If blocked by missing requirements, state the assumption or ask a focused question rather than inventing product facts.
+
+## Code Review Rules
+
+Flag these risks only when introduced by the PR:
+
+- **Allergen/dietary truth:** Flag inferring allergy-safety, gluten-free, vegan, or ingredient-free status from missing, partial, or unverified menu data. Safe path: explicitly represent unknown/unverified states and require kitchen-approved facts; keep ingredient content distinct from cross-contact.
+- **Offline independence:** Flag new mandatory runtime network calls for core menu lookup, or UI/docs claiming offline readiness without tested caching and installation. Safe path: bundle local menu information and essential assets, report update/offline failures honestly, and distinguish browser simulation from real-iPad verification.
+- **Shared component consistency:** Once the data model exists, flag silently flattening or duplicating ingredient/sauce relationships into contradictory dish records, or treating an omitted ingredient as proof of allergen absence. Safe path: resolve references from a canonical, verified data source and preserve unknown states; do not prescribe an unapproved schema before the data-model spec exists.
